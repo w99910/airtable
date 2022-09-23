@@ -2,8 +2,6 @@
 
 namespace Zlt\Airtable;
 
-
-use Airtable\AirtableApiRequest;
 use DateTime;
 use Illuminate\Support\Facades\Http;
 
@@ -47,7 +45,7 @@ class AirtableApi
     /**
      * @throws \Exception
      */
-    static function get(string $appId, string $tableName, AirtableApiRequest $request = null)
+    static function get(string $appId, string $tableName, AirtableRequest $request = null)
     {
         $api = self::getInstance();
         if ($api->apiCall == 4 && $api->date->diffInSeconds(now()) > 3) {
@@ -58,7 +56,7 @@ class AirtableApi
         }
 
         if (!$request) {
-            $request = new AirtableApiRequest();
+            $request = new AirtableRequest();
         }
 
         $query = self::$base . $appId . '/' . $tableName . '?' . $request->getParametersQuery();
@@ -73,7 +71,7 @@ class AirtableApi
     /**
      * @throws \Exception
      */
-    static function getFullList(string $appId, string $tableName, ?AirtableApiRequest $request): array
+    static function getFullList(string $appId, string $tableName, ?AirtableRequest $request): array
     {
         $data = [];
         try {
