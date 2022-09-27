@@ -125,7 +125,7 @@ class AirtableRequest
                 if ($query != '') {
                     $query .= '&';
                 }
-                $query .= urlencode("sort[$key][$attribute]={$sort[$attribute]}");
+                $query .= urlencode("sort[$key][$attribute]")."={$sort[$attribute]}";
             }
         }
         return $query;
