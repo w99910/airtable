@@ -63,7 +63,7 @@ class AirtableRequest
             if ($query != '') {
                 $query .= '&';
             }
-            $query .= 'sort=' . $this->getSortValues();
+            $query .= $this->getSortValues();
         }
 
         if($this->cellFormat){
