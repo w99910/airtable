@@ -59,6 +59,27 @@ class AirtableRequest
             $query .= 'filterByFormula=' . urlencode($this->filterByFormula);
         }
 
+        if(!empty($this->sort)){
+            if ($query != '') {
+                $query .= '&';
+            }
+            $query .= 'sort=' . $this->getSortValues();
+        }
+
+        if($this->cellFormat){
+            if ($query != '') {
+                $query .= '&';
+            }
+            $query .= 'cellFormat=' . $this->cellFormat;
+        }
+
+        if($this->timeZone){
+            if ($query != '') {
+                $query .= '&';
+            }
+            $query .= 'timeZone=' . $this->timeZone;
+        }
+
         if ($this->offset) {
             if ($query != '') {
                 $query .= '&';
@@ -94,5 +115,17 @@ class AirtableRequest
             $query .= 'returnFieldsByFieldId=true';
         }
         return $query;
+    }
+
+    private function getSortValues(){
+        $query = '';
+        foreach($this->sort as $key=>$sort){
+            foreach(array_keys($sort) as $attribute){
+                if ($query != '') {
+                    $query .= '&';
+                }
+                $query .= urlencode("sort[$key][$attribute]={$sort[$attribute]}");
+            }
+        }
     }
 }
