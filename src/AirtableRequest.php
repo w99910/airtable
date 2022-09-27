@@ -117,7 +117,8 @@ class AirtableRequest
         return $query;
     }
 
-    private function getSortValues(){
+    private function getSortValues(): string
+    {
         $query = '';
         foreach($this->sort as $key=>$sort){
             foreach(array_keys($sort) as $attribute){
@@ -127,5 +128,6 @@ class AirtableRequest
                 $query .= urlencode("sort[$key][$attribute]={$sort[$attribute]}");
             }
         }
+        return $query;
     }
 }
