@@ -82,6 +82,7 @@ class AirtableApi
                     break;
                 }
                 $request->offset = $response->offset;
+                sleep(1);
             } while (isset($response->records) && count($response->records) > 0);
             return array_merge(...$data);
         } catch (\Exception $e) {
