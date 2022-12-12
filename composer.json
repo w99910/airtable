@@ -1,11 +1,14 @@
 {
     "name": "zlt/airtable",
     "type": "library",
-    "description": "PHP library for Airtable Api",
+    "description": "Easy To Use PHP SDK for Airtable API",
     "keywords": [
         "php",
         "library",
-        "airtable"
+        "airtable",
+        "airtable-php",
+        "easy-to-use-airtable",
+        "php-sdk-airtable"
     ],
     "license": "MIT",
     "autoload": {
@@ -21,8 +24,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^7.4|^8.0",
-        "illuminate/config": "^8.0|^9.0",
-        "illuminate/support": "^8.0|^9.0"
+        "php": "^8.0",
+        "ext-curl": "*"
     }
 }
